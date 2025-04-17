@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JurySync - Your Personal Advocate</title>
+  <link rel="icon" type="image/png" href="assets/web-logo.png" />
+  <link rel="stylesheet" href="front.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/logo.png" height="40" alt="Logo" class="me-2" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <!-- Consult an Expert -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle custom-expert-btn" href="#" data-bs-toggle="dropdown">Consult an Expert</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Talk to a Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Talk to a Chartered Accountant</a></li>
+              <li><a class="dropdown-item" href="#">Talk to a Company Secretary</a></li>
+            </ul>
+          </li>
+
+          <!-- Free Legal Documentation -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Free Legal Documentation</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">All Legal Documents</a></li>
+              <li><a class="dropdown-item" href="#">Rental Agreement</a></li>
+              <li><a class="dropdown-item" href="#">Commercial Rental Agreement</a></li>
+              <li><a class="dropdown-item" href="#">Experience Letter</a></li>
+              <li><a class="dropdown-item" href="#">Appointment Letter</a></li>
+              <li><a class="dropdown-item" href="#">Affidavit Format</a></li>
+              <li><a class="dropdown-item" href="#">Power Of Attorney</a></li>
+              <li><a class="dropdown-item" href="#">Income Certificate</a></li>
+              <li><a class="dropdown-item" href="#">No Objection Certificate</a></li>
+              <li><a class="dropdown-item" href="#">Salary Slip</a></li>
+              <li><a class="dropdown-item" href="#">Resignation Letter</a></li>
+              <li><a class="dropdown-item" href="#">Legal Heir Certificate</a></li>
+            </ul>
+          </li>
+
+          <!-- About Us (with Contact Us inside) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Our Team</a></li>
+              <li><a class="dropdown-item" href="#">Our Mission</a></li>
+              <li><a class="dropdown-item" href="#">Email Support</a></li>
+            </ul>
+          </li>
+
+          <!-- Legal Explorers & Experts -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="legalExpertsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Legal Explorers & Experts
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="legalExpertsDropdown">
+              <li><h6 class="dropdown-header">Lawyer Services</h6></li>
+              <li><a class="dropdown-item" href="#">Labour Law Advisor</a></li>
+              <li><a class="dropdown-item" href="#">Criminal Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Labour Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Consumer Court Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Divorce Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Banking Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Immigration Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Family Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Litigation Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Intellectual Property Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Trademark Lawyer</a></li>
+              <li><a class="dropdown-item" href="#">Reply to ITR Notice</a></li>
+            </ul>
+          </li>
+
+          <!-- Login Button -->
+          <li class="nav-item">
+            <a class="btn btn-primary ms-2" href="login.html">Login</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar for Login -->
+<div id="loginSidebar" class="login-sidebar">
+    <div class="login-header">
+      <h5>Login</h5>
+      <button onclick="closeLoginSidebar()" class="close-btn">&times;</button>
+    </div>
+    <form class="p-3">
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>Mobile Number</label>
+        <input type="tel" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>City</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>Pincode</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>Language</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Problem Type</label>
+        <select class="form-select">
+          <option>Criminal</option>
+          <option>Civil</option>
+          <option>Family</option>
+          <option>Corporate</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+  </div>
+  <div id="overlay"></div>
+
+  <div id="loginSidebar" class="login-sidebar">
+    <button class="close-btn">&times;</button>
+    <!-- Your login form content here -->
+  </div>
+    <!-- Main Content Sections -->
+  <main class="container py-5">
+    <section>
+      <h2>Areas of Expertise</h2>
+      <ul>
+        <li>Legal Notices</li>
+        <li>Employment Issues</li>
+        <li>Property Succession</li>
+        <li>Property Registration</li>
+        <li>Property Verification</li>
+        <li>Cheque Bounce Cases</li>
+        <li>Money Recovery Issues</li>
+        <li>Mutual Divorce</li>
+        <li>Divorce & Matrimonial Consultation</li>
+        <li>Consumer Cases</li>
+        <li>Will Drafting and Registration</li>
+        <li>Criminal Complaints</li>
+        <li>Debt Recovery Tribunal</li>
+        <li>National Green Tribunal Cases</li>
+        <li>Motor Accident Claims</li>
+        <li>Business Setup</li>
+        <li>Fundraising for Businesses</li>
+      </ul>
+    </section>
+
+    <section class="mt-5">
+      <h2>Duties of a Lawyer</h2>
+      <ul>
+        <li>Providing legal representation and advocacy</li>
+        <li>Offering expert legal advice</li>
+        <li>Conducting thorough research and analysis</li>
+        <li>Drafting and reviewing legal documents</li>
+        <li>Engaging in negotiation and mediation</li>
+        <li>Representing clients in court proceedings</li>
+        <li>Providing ongoing client counselling</li>
+        <li>Maintaining confidentiality and professionalism</li>
+      </ul>
+    </section>
+
+    <section class="mt-5">
+      <h2>Benefits of Online Legal Consultations</h2>
+      <ul>
+        <li><strong>Cost-Effective Services:</strong> Access legal advice at a fraction of traditional costs.</li>
+        <li><strong>Simplified Legal Paperwork:</strong> Easily manage and retrieve legal documents.</li>
+        <li><strong>Immediate Access to Reputable Attorneys:</strong> Connect with experienced lawyers promptly.</li>
+        <li><strong>Transparency:</strong> Stay informed about your case progress in real-time.</li>
+      </ul>
+    </section>
+
+    <section class="mt-5">
+      <h2>Why Choose Our Platform?</h2>
+      <ul>
+        <li><strong>Expertise:</strong> Our lawyers specialize in various legal fields to cater to your specific needs.</li>
+        <li><strong>Convenience:</strong> Consult with legal experts from the comfort of your home.</li>
+        <li><strong>Multilingual Support:</strong> Receive legal advice in your preferred language, including English, Hindi, Tamil, Telugu, Kannada, Marathi, Bengali, and Malayalam.</li>
+        <li><strong>Secure and Confidential:</strong> Your information is protected with the highest standards of confidentiality.</li>
+      </ul>
+    </section>
+
+    <section class="text-center py-5 bg-light">
+      <h1 class="display-5 fw-bold">Your Legal Ally, Anytime. Anywhere.</h1>
+      <p class="lead">Expert legal help, transparent pricing, and fast support — just a few clicks away.</p>
+      <a href="#consultation" class="btn btn-primary btn-lg mt-3">Get Legal Help Now</a>
+    </section>
+
+    <section class="container my-5">
+      <h2 class="mb-4">Explore Legal Categories</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Criminal Law</h5>
+              <p class="card-text">Assaults, FIRs, Bail, and more.</p>
+              <a href="#" class="btn btn-outline-primary">Explore</a>
+            </div>
+          </div>
+        </div>
+        <!-- Add similar cards for Civil, Family, Corporate, etc. -->
+      </div>
+    </section>
+
+    
+    <section class="container text-center my-5">
+      <h2>Need Instant Help?</h2>
+      <p class="lead">Try our AI-powered assistant to assess your case complexity and suggest the next legal steps.</p>
+      <a href="#" class="btn btn-dark">Chat with JuryBot</a>
+    </section>
+
+    
+    <section class="container my-5">
+      <h2 class="mb-4">What Our Users Say</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p>"JurySync helped me file a legal notice in 24 hours. Fast and reliable!"</p>
+            <footer class="blockquote-footer">Ananya R., Bangalore</footer>
+          </blockquote>
+        </div>
+        <!-- Add more testimonials -->
+      </div>
+    </section>
+    <section class="container my-5">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              How much do your services cost?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Most legal consultations start at ₹499. Document drafting is priced per service.
+            </div>
+          </div>
+        </div>
+        <!-- More accordion items -->
+      </div>
+    </section>
+        
+  </main>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="front.js"></script>
+</body>
+</html>
