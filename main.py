@@ -38,10 +38,37 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
+    return redirect(url_for('dashboard_stats'))
+
+@app.route('/dashboard-stats')
+def dashboard_stats():
     total_cases = Case.query.count()
     solved_cases = Case.query.filter_by(status='Solved').count()
     pending_cases = Case.query.filter_by(status='Pending').count()
     return render_template('index.html', total=total_cases, solved=solved_cases, pending=pending_cases)
+
+@app.route('/front',methods=['GET', 'POST'])
+def front():
+    if current_user.is_authenticated:
+        return redirect(url_for('search_lawyers'))
+    return render_template('front.html')
+
+@app.route('/search_lawyers', methods=['GET', 'POST'])
+@login_required
+def search_lawyers():
+    lawyers = []
+    if request.method == 'POST':
+        specialization = request.form.get('specialization', '')
+        if specialization:
+            lawyers = User.query.filter(
+                User.is_lawyer == True,
+                User.specialization.ilike(f'%{specialization}%')
+            ).all()
+        else:
+            lawyers = User.query.filter_by(is_lawyer=True).all()
+    return render_template('search_lawyers.html', lawyers=lawyers)
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -75,13 +102,51 @@ def login():
         return redirect(url_for('dashboard'))
         
     if request.method == 'POST':
-        user = User.query.filter_by(username=request.form['username']).first()
+        user = User.query.filter_by(username=request.form['username'], is_lawyer=True).first()
         if user and user.password == request.form['password']:
             login_user(user)
             flash('Logged in successfully.')
             return redirect(url_for('dashboard'))
         flash('Invalid username or password')
     return render_template('login.html')
+
+@app.route('/user_login', methods=['GET', 'POST'])
+def user_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('search_lawyers'))
+        
+    if request.method == 'POST':
+        user = User.query.filter_by(username=request.form['username'], is_lawyer=False).first()
+        if user and user.password == request.form['password']:
+            login_user(user)
+            flash('Logged in successfully.')
+            return redirect(url_for('search_lawyers'))
+        flash('Invalid username or password')
+    return render_template('user_login.html')
+
+@app.route('/user_register', methods=['GET', 'POST'])
+def user_register():
+    if current_user.is_authenticated:
+        return redirect(url_for('search_lawyers'))
+        
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists')
+            return render_template('user_register.html')
+            
+        new_user = User(
+            username=username,
+            password=password,
+            is_lawyer=False
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Registration successful! Please login.')
+        return redirect(url_for('user_login'))
+    return render_template('user_register.html')
 
 @app.route('/logout')
 @login_required
@@ -139,6 +204,15 @@ def search():
 
 with app.app_context():
     db.create_all()
+
+@app.route('/contact_lawyer/<int:lawyer_id>')
+@login_required
+def contact_lawyer(lawyer_id):
+    lawyer = User.query.get_or_404(lawyer_id)
+    if not lawyer.is_lawyer:
+        flash('Invalid lawyer profile')
+        return redirect(url_for('search_lawyers'))
+    return render_template('contact_lawyer.html', lawyer=lawyer)
 
 @app.route('/chat', methods=['POST'])
 def chat():
