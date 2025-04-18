@@ -103,6 +103,12 @@
             overflow-wrap: normal;
         }
 
+        .navbar-collapse>a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
         .chat-nav {
             position: sticky;
             top: 0;
@@ -128,6 +134,15 @@
     <nav>
         <h1>JuriSync</h1>
         <div class="mt-4">
+            <div class="navbar-collapse btn btn-primary">
+                <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Our Team</a></li>
+                    <li><a class="dropdown-item" href="#">Our Mission</a></li>
+                    <li><a class="dropdown-item" href="#">E-mail Support</a></li>
+                </ul>
+            </div>
+            <a href="/front" class="btn btn-success">Juri Connect</a>
             <a href="/login" class="btn btn-primary">Lawyer Login</a>
             <a href="/register" class="btn btn-success">Register as Lawyer</a>
         </div>
