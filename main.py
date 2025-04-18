@@ -2,8 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import datetime
+import groq
+import os
+from flask import jsonify
 
 app = Flask(__name__)
+f=open('C:/Users/KAUSHIK/Desktop/DOCS/KH/Groq_API_KEY.txt','r')
+groq_client = groq.Groq(api_key=f.readline())
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///legal.db'
 db = SQLAlchemy(app)
@@ -134,6 +139,37 @@ def search():
 
 with app.app_context():
     db.create_all()
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    message = request.json.get('message')
+    if not message:
+        return jsonify({'error': 'No message provided'}), 400
+
+    try:
+        chat_completion = groq_client.chat.completions.create(
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful legal assistant. Provide concise and accurate responses."
+                },
+                {
+                    "role": "user",
+                    "content": message
+                }
+            ],
+            temperature=0.5,
+            max_tokens=1000
+        )
+        
+        if chat_completion and chat_completion.choices and len(chat_completion.choices) > 0:
+            response = chat_completion.choices[0].message.content
+            return jsonify({'response': response})
+        else:
+            return jsonify({'error': 'No response from chat model'}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
