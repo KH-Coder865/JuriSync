@@ -28,9 +28,24 @@ class Case(db.Model):
     case_type = db.Column(db.String(100), nullable=False)
     section = db.Column(db.String(50), nullable=False)
     article = db.Column(db.String(50), nullable=False)
-    status = db.Column(db.String(20), default='Pending')
+    status = db.Column(db.String(20), nullable=False)
     date_filed = db.Column(db.DateTime, default=datetime.utcnow)
     lawyer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    domain = db.Column(db.String(20), nullable=False)
+    days_until_hearing = db.Column(db.Integer)
+    days_since_start = db.Column(db.Integer)
+    people_influenced = db.Column(db.Integer)
+    economic_background = db.Column(db.String(100))
+    connected_to_larger_case = db.Column(db.Boolean, default=False)
+    previous_decisions = db.Column(db.Text, nullable=False)
+    case_stage = db.Column(db.String(50), nullable=False)
+    is_pil = db.Column(db.Boolean, default=False)
+    marginalized_group = db.Column(db.String(50),nullable=False)
+    is_repeated_offense = db.Column(db.Boolean, default=False)
+    risk_to_safety = db.Column(db.Boolean, default=False)
+    minors_involved = db.Column(db.Boolean, default=False)
+    complexity_level = db.Column(db.String(20), nullable=False)
+    urgency_level = db.Column(db.String(20), nullable=False)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -174,8 +189,24 @@ def add_case():
             description=request.form['description'],
             case_type=request.form['case_type'],
             section=request.form['section'],
+            status=request.form['status'],
             article=request.form['article'],
-            lawyer_id=current_user.id
+            lawyer_id=current_user.id,
+            domain=request.form['domain'],
+            days_until_hearing=int(request.form['days_until_hearing']),
+            days_since_start=int(request.form['days_since_start']),
+            people_influenced=int(request.form['people_influenced']),
+            economic_background=request.form['economic_background'],
+            connected_to_larger_case=request.form.get('connected_to_larger_case') == 'Yes',
+            previous_decisions=request.form['previous_decisions'],
+            case_stage=request.form['case_stage'],
+            is_pil=request.form.get('is_pil') == 'Yes',
+            marginalized_group=request.form['marginalized_group'],
+            is_repeated_offense=request.form.get('is_repeated_offense') == 'Yes',
+            risk_to_safety=request.form.get('risk_to_safety') == 'Yes',
+            minors_involved=request.form.get('minors_involved') == 'Yes',
+            complexity_level=request.form['complexity_level'],
+            urgency_level=request.form['urgency_level']
         )
         db.session.add(new_case)
         db.session.commit()
