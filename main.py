@@ -15,12 +15,189 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+# def compute_urgency(case):
+#     score = 0
+#     if 'murder' in case.description.lower() or 'rape' in case.description.lower():
+#         score += 5
+#     if case.case_type.lower() in ['criminal']:
+#         score += 3
+#     if case.case_type.lower() in ['civil','property']:
+#         score += 2
+#     if (datetime.utcnow() - case.date_filed).days > 60:
+#         score += 1
+#     if case.status.lower() != 'solved':
+#         score += 1
+#     return min(score, 10)
+
+def compute_urgency(case):
+    score = 0.0
+
+    # Weightage map (total possible = ~20, will normalize to 10)
+    WEIGHTS = {
+        'days_until_hearing': 3,
+        'days_since_start': 2,
+        'is_pil': 2,
+        'minors_involved': 2,
+        'risk_to_safety': 2,
+        'people_influenced': 2,
+        'is_repeated_offense': 1,
+        'marginalized_group': 1,
+        'economic_background': 2,
+        'connected_to_larger_case': 1,
+        'case_stage': 1,
+        'complexity_level': 2,
+        'case_type': 3,
+        'domain':2,
+        'section':2,
+        'description':3,
+    }
+
+    # Imminent hearing = urgent
+    if case.days_until_hearing is not None:
+        if case.days_until_hearing <= 3:
+            score += WEIGHTS['days_until_hearing']
+        elif case.days_until_hearing <= 7:
+            score += WEIGHTS['days_until_hearing'] * 0.75
+        elif case.days_until_hearing <= 15:
+            score += WEIGHTS['days_until_hearing'] * 0.5
+
+    # Stalled/dragging cases
+    if case.days_since_start is not None and case.days_since_start > 180:
+        score += WEIGHTS['days_since_start']
+
+    # Urgency based on IPC/CrPC section
+    serious_sections = {
+        '302': 1.0,  # Murder
+        '376': 1.0,  # Rape
+        '307': 0.8,  # Attempt to murder
+        '498a': 0.7, # Domestic violence
+        '354': 0.7,  # Assault on women
+        '420': 0.5,  # Cheating
+        '124a': 1.0, # Sedition
+        '120b': 0.5, # Criminal conspiracy
+        '395': 0.8,  # Dacoity
+        '304b': 1.0, # Dowry death
+        '363': 0.7,  # Kidnapping
+    }
+
+    section_code = case.section.strip().lower()
+    if section_code in serious_sections:
+        score += serious_sections[section_code] * 2  # Section gets max 2 weigh
+    
+    # Description-based urgency analysis
+    description = case.description.lower()
+    
+    urgency_keywords = {
+        'murder': 2.0,
+        'rape': 2.0,
+        'terrorism': 2.0,
+        'life threatening': 1.5,
+        'death': 1.5,
+        'violence': 1.2,
+        'assault': 1.2,
+        'sexual harassment': 1.8,
+        'child': 1.5,
+        'urgent': 1.0,
+        'emergency': 1.0,
+        'immediate attention': 1.5,
+        'custody': 1.2,
+        'missing': 1.5,
+        'mental health': 1.3,
+        'blackmail': 1.0,
+        'domestic abuse': 1.8,
+        'acid attack': 2.0,
+        'dowry': 1.5,
+        'threat': 1.2,
+        'kidnap': 1.8,
+    }
+
+    for keyword, weight in urgency_keywords.items():
+        if keyword in description:
+            score += WEIGHTS['description']
+
+    # PILs are system-impacting
+    if case.is_pil:
+        score += WEIGHTS['is_pil']
+
+    # Child safety = red alert
+    if case.minors_involved:
+        score += WEIGHTS['minors_involved']
+    if case.risk_to_safety:
+        score += WEIGHTS['risk_to_safety']
+
+    #Domain
+    if case.domain.lower() in ['international','national']:
+        score+= WEIGHTS['domain']
+    else:
+        score+=1
+
+    # People affected
+    if case.people_influenced:
+        if case.people_influenced >= 1000:
+            score += WEIGHTS['people_influenced']
+        elif case.people_influenced >= 100:
+            score += WEIGHTS['people_influenced'] * 0.75
+        elif case.people_influenced >= 10:
+            score += WEIGHTS['people_influenced'] * 0.5
+
+    if case.is_repeated_offense:
+        score += WEIGHTS['is_repeated_offense']
+
+    # Vulnerable communities
+    marginalized_values = ['sc/st', 'obc', 'tribal', 'minority']
+    if case.marginalized_group.lower() in marginalized_values:
+        score += WEIGHTS['marginalized_group']
+
+    poor_backgrounds = ['poor',  'bpl']
+    if case.economic_background.lower() in poor_backgrounds:
+        score += WEIGHTS['economic_background']
+    elif case.economic_background.lower() in ['mc','umc']:
+        score+=WEIGHTS['economic_background']-1
+    else:
+        score+=WEIGHTS['economic_background']-1.5
+
+    if case.connected_to_larger_case:
+        score += WEIGHTS['connected_to_larger_case']
+
+    # Based on stage (example: 'investigation', 'trial', 'appeal', etc.)
+    stage_urgency_map = {
+        'trial': 0.95,
+        'filing': 0.8,
+        'drafting': 0.5,
+        'pre-trial': 0.9,
+        'appeal': 1.0
+    }
+    stage = case.case_stage.lower()
+    if stage in stage_urgency_map:
+        score += WEIGHTS['case_stage'] * stage_urgency_map[stage]
+
+    # Complexity — urgent if complex and stuck
+    complexity_map = {
+        'high': 1.0,
+        'medium': 0.6,
+        'low': 0.3
+    }
+    level = case.complexity_level.lower()
+    if level in complexity_map:
+        score += WEIGHTS['complexity_level'] * complexity_map[level]
+
+    # Certain domains are more urgent by nature
+    high_priority_domains = ['criminal', 'family', 'human rights']
+    if case.case_type.lower() in high_priority_domains:
+        score += WEIGHTS['case_type']
+    else:
+        score+=1.5
+
+    # Final normalization to 10
+    urgency = min(round((score / 31.0) * 10), 10)
+    return urgency
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     is_lawyer = db.Column(db.Boolean, default=False)
-    specialization = db.Column(db.String(100))
+    specialization = db.Column(db.String(100),nullable=False)
 
 class Case(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,7 +222,7 @@ class Case(db.Model):
     risk_to_safety = db.Column(db.Boolean, default=False)
     minors_involved = db.Column(db.Boolean, default=False)
     complexity_level = db.Column(db.String(20), nullable=False)
-    urgency_level = db.Column(db.String(20), nullable=False)
+    urgency = db.Column(db.Integer)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -73,11 +250,11 @@ def front():
 def search_lawyers():
     lawyers = []
     if request.method == 'POST':
-        specialization = request.form.get('specialization', '')
+        specialization = str(request.form.get('specialization'))
         if specialization:
             lawyers = User.query.filter(
                 User.is_lawyer == True,
-                User.specialization.ilike(f'%{specialization}%')
+                User.specialization.like(f'%{specialization}%')
             ).all()
         else:
             lawyers = User.query.filter_by(is_lawyer=True).all()
@@ -93,7 +270,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        specialization = request.form['specialization']
+        specialization = str(request.form.get('specialization'))
         
         if User.query.filter_by(username=username).first():
             flash('Username already exists')
@@ -174,9 +351,28 @@ def logout():
 def dashboard():
     if current_user.is_lawyer:
         cases = Case.query.filter_by(lawyer_id=current_user.id).all()
+        for case in cases:
+            case.urgency_score = compute_urgency(case)
+
+    # Sort cases by urgency in descending order (fastest = Timsort)
+        cases.sort(key=lambda c: c.urgency_score, reverse=True)
     else:
         cases = Case.query.all()
-    return render_template('dashboard.html', cases=cases)
+    return render_template('dashboard.html', cases=cases, compute_urgency=compute_urgency)
+
+# @app.route('/dashboard')
+# @login_required
+# def dashboard():
+#     cases = Case.query.all()
+
+#     # Annotate each case with its urgency score
+#     for case in cases:
+#         case.urgency_score = compute_urgency(case)
+
+#     # Sort cases by urgency in descending order (fastest = Timsort)
+#     cases.sort(key=lambda c: c.urgency_score, reverse=True)
+
+#     return render_template('dashboard.html', cases=cases, compute_urgency=compute_urgency)
 
 @app.route('/add_case', methods=['GET', 'POST'])
 @login_required
@@ -187,7 +383,7 @@ def add_case():
     if request.method == 'POST':
         new_case = Case(
             description=request.form['description'],
-            case_type=request.form['case_type'],
+            case_type=str(request.form.get('case_type')),
             section=request.form['section'],
             status=request.form['status'],
             article=request.form['article'],
@@ -199,14 +395,13 @@ def add_case():
             economic_background=request.form['economic_background'],
             connected_to_larger_case=request.form.get('connected_to_larger_case') == 'Yes',
             previous_decisions=request.form['previous_decisions'],
-            case_stage=request.form['case_stage'],
+            case_stage=request.form.get('case_stage'),
             is_pil=request.form.get('is_pil') == 'Yes',
             marginalized_group=request.form['marginalized_group'],
             is_repeated_offense=request.form.get('is_repeated_offense') == 'Yes',
             risk_to_safety=request.form.get('risk_to_safety') == 'Yes',
             minors_involved=request.form.get('minors_involved') == 'Yes',
-            complexity_level=request.form['complexity_level'],
-            urgency_level=request.form['urgency_level']
+            complexity_level=request.form['complexity_level']
         )
         db.session.add(new_case)
         db.session.commit()
@@ -243,7 +438,7 @@ def contact_lawyer(lawyer_id):
     if not lawyer.is_lawyer:
         flash('Invalid lawyer profile')
         return redirect(url_for('search_lawyers'))
-    return render_template('contact_lawyer.html', lawyer=lawyer)
+    return render_template('contact_lawyer.html', lawyer=lawyer, compute_urgency=compute_urgency)
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -278,3 +473,6 @@ def chat():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
+
+
+
