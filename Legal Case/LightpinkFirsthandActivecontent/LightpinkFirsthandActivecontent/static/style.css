@@ -1,0 +1,126 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+nav {
+    background-color: rgb(165, 246, 246);
+    position: sticky;
+    display: flex;
+    padding: 20px;
+    z-index: 10;
+    top: 2px;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 10px;
+    width: 90%;
+    position: absolute;
+    bottom: 5px;
+}
+
+.cb-icon {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    background-color: #e3f2fd;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    bottom: 20px;
+    z-index: 8;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.cb-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 4px gray;
+}
+
+.chat-container {
+    height: 500px;
+    background-color: rgb(202, 197, 197);
+    border-radius: 10px;
+    position: fixed;
+    /* visibility: hidden; */
+    flex-direction: column;
+    bottom: 20px;
+    width: 400px;
+    /* padding: 20px; */
+    right: 10px;
+    z-index: 9;
+    /* overflow-y:scroll ;
+    overflow-wrap: normal; */
+    display: none;
+}
+
+.bot-message {
+    color: black;
+    background-color: rgb(185, 245, 245);
+    width: 40%;
+    padding: 2px;
+    margin-right: 0% 60%;
+    overflow-wrap: break-word;
+}
+
+.user-message {
+    color: black;
+    padding: 2px;
+    background-color: rgb(125, 252, 201);
+    width: 40%;
+    margin: 0% 60%;
+    overflow-wrap: break-word;
+}
+
+.error-message {
+    background-color: rgb(242, 162, 162);
+    color: red;
+    padding: 2px;
+
+}
+
+nav .mt-4 {
+    position: absolute;
+    right: 20px;
+}
+
+.cc2 {
+    width: 100%;
+    height: 60%;
+    padding: 20px;
+    background-color: rgb(202, 197, 197);
+    overflow-y: scroll;
+    overflow-x: wrap;
+    overflow-wrap: normal;
+}
+
+
+.navbar-collapse>a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.chat-nav {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(5, 175, 175);
+    display: flex;
+    color: rgb(1, 18, 25);
+    flex-direction: column;
+}
+
+.chat-nav div {
+    position: absolute;
+    right: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+}
+
