@@ -7,52 +7,25 @@
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='web-logo.png') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/front.css') }}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="{{ url_for('static', filename='logo.png') }}" height="40" alt="Logo" class="me-2" />
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <!-- {% if current_user.is_authenticated %}
-           Consult an Expert
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle custom-expert-btn" href="#" data-bs-toggle="dropdown">Consult an Expert</a>
+  <nav>
+    <h1>JuriSync</h1>
+    <div class="mt-4">
+        <div class="navbar-collapse btn btn-primary">
+            <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Talk to a Lawyer</a></li>
-              <li><a class="dropdown-item" href="#">Talk to a Chartered Accountant</a></li>
-              <li><a class="dropdown-item" href="#">Talk to a Company Secretary</a></li>
+                <li><a class="dropdown-item" href="#">Our Team</a></li>
+                <li><a class="dropdown-item" href="#">Our Mission</a></li>
+                <li><a class="dropdown-item" href="#">E-mail Support</a></li>
             </ul>
-          </li> -->
-          <!-- Free Legal Documentation -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Free Legal Documentation</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">All Legal Documents</a></li>
-              <li><a class="dropdown-item" href="#">Rental Agreement</a></li>
-              <li><a class="dropdown-item" href="#">Commercial Rental Agreement</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
-          </li>
-           <!-- {% else %} -->
-          <li class="nav-item">
-            <a href="{{ url_for('user_login') }}" class="btn btn-primary">Login to Consult</a>
-          </li>
-          <!-- {% endif %}  -->
-        </ul>
-      </div>
+        </div>
+        <a href="/user_login" class="btn btn-primary">User Login</a>
     </div>
-  </nav>
+</nav>
 
   <!-- Main Content -->
   <div class="container mt-5">
