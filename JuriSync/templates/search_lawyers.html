@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <title>Find a Lawyer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='weblogo.jpg') }}">
+    <!-- <link rel="stylesheet" href="cd.css"> -->
+</head>
+    
+<body>
+    <nav class="navbar navbar-expand-lg shadow p-3 rounded" style="background-color: rgb(182, 230, 230);">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3" href="/dashboard-stats">JuriSync</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+                    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="#">Search Lawyers</a>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#">Our Team</a></li>
+                            <li><a class="dropdown-item" href="#">Our Mission</a></li>
+                            <li><a class="dropdown-item" href="#">E-mail Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Contact Us</a></li> <!-- moved from main nav -->
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" id="expertsDropdown" role="button" data-bs-toggle="dropdown">
+                            Legal Explorers & Experts
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="expertsDropdown">
+                            <li><a class="dropdown-item" href="#">Browse Legal Experts</a></li>
+                            <li><a class="dropdown-item" href="#">Join as Explorer</a></li>
+                            <li><a class="dropdown-item" href="#">Expert Webinars</a></li>
+                        </ul>
+                    </li>
+    
+                </ul>
+    
+                <div class="d-flex gap-2">
+                    <a href="/login" class="btn btn-outline-primary">Lawyer Login</a>
+                    <a href="/register" class="btn btn-dark">Register as Lawyer</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Find Your Legal Expert</h2>
+        <form method="POST" class="mb-4">
+            <div class="mb-3">
+                <label>Specialization</label>
+                <select name="specialization" class="form-control" required>
+                    <option value="Criminal Lawyer">Criminal Lawyer</option>
+                    <option value="Labour Lawyer">Labour Lawyer</option>
+                    <option value="Consumer Court Lawyer">Consumer Court Lawyer</option>
+                    <option value="Divorce Lawyer">Divorce Lawyer</option>
+                    <option value="Banking Lawyer">Banking Lawyer</option>
+                    <option value="Imigration Lawyer">Imigration Lawyer</option>
+                    <option value="Family Lawyer">Family Lawyer</option>
+                    <option value="Litigation Lawyer">Litigation Lawyer</option>
+                    <option value="Trademark Lawyer">Trademark Lawyer</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if lawyers %}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for lawyer in lawyers %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">{{ lawyer.username }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text mb-1"><strong>Specialization:</strong> {{ lawyer.specialization }}</p>
+                <p class="card-text mb-1"><strong>Experience:</strong> {{ lawyer.yof }} years</p>
+                <a href="/contact_lawyer/{{ lawyer.id }}" class="btn btn-outline-primary w-100">Contact Lawyer</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning text-center mt-4">
+    No lawyers available for this specialization at the moment.
+</div>
+{% endif %}
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
