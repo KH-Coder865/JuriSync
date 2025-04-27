@@ -1,3 +1,49 @@
+## 🚀 Technical Stack
+
+This project utilizes the following technologies:
+
+### 1. **Backend Framework:**
+- **Flask**: A lightweight Python web framework, perfect for building web applications. It's fast, simple, and flexible, making it an ideal choice for this project.
+
+### 2. **Database:**
+- **SQLAlchemy**: An Object-Relational Mapping (ORM) library that provides a high-level interface for interacting with relational databases. It helps to easily manage the database schema and execute SQL queries.
+
+### 3. **User Authentication:**
+- **Flask-Login**: A Flask extension used to manage user sessions, login, and authentication, ensuring secure user management.
+
+### 4. **AI/Complexity Analysis:**
+- **GROQ**: A Python library used for querying data with Grok language, enabling real-time complexity and urgency analysis of legal cases.
+
+### 5. **Frontend:**
+- **HTML/CSS**: The basic building blocks for creating the structure and styling of web pages.
+- **Bootstrap**: A front-end framework that provides pre-designed components and layouts, ensuring responsive and mobile-first web design.
+
+### 6. **Environment Management:**
+- **Python venv (Virtual Environment)**: Creates isolated environments for the project, ensuring all dependencies are installed without interfering with the global Python installation.
+
+### 7. **Version Control:**
+- **Git & GitHub**: Version control systems that manage code changes and allow for easy collaboration via GitHub repositories.
+
+---
+
+### 🔧 Additional Tools and Libraries:
+- **Flask-SQLAlchemy**: For ORM-based database interaction.
+- **Flask-WTF**: For handling and validating forms in Flask applications.
+- **Jinja2**: A templating engine for rendering HTML templates in Flask.
+- **Werkzeug**: A WSGI utility library, providing HTTP-related functionality used internally by Flask.
+
+---
+
+### 🛠 Development Tools:
+- **Visual Studio Code** (or your preferred IDE): Used for writing and debugging code.
+- **Postman**: For testing APIs and sending requests during development.
+
+---
+
+### 📦 Package Management:
+- **Pip**: Python's package installer, used to install dependencies from `requirements.txt`.
+
+
 ### 💻 Setup Instructions
 
 #### 1. **Install Python**
