@@ -5,7 +5,7 @@ This project utilizes the following technologies:
 - **Backend**: Flask (lightweight Python framework)
 - **Database**: SQLAlchemy (ORM for database management)
 - **User Authentication**: Flask-Login (user session and auth management)
-- **AI/Complexity Analysis**: GROQ (real-time legal case complexity analysis)
+- **AI/Chat Bot**: GROQ (real-time Legal Assistance)
 - **Frontend**: HTML/CSS, Bootstrap (responsive web design)
 - **Environment**: Python venv (isolated environments for dependencies)
 - **Version Control**: Git & GitHub
