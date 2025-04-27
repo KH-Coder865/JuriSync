@@ -3,7 +3,7 @@
 1. **Clone the repository**
 ```bash
 git clone https://github.com/KH-Coder865/JuriSync.git
-cd JuriSync
+cd JuriSync-main
 ```
 
 2. **Set up virtual environment**
