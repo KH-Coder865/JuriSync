@@ -43,6 +43,7 @@ This project utilizes the following technologies:
 ### 📦 Package Management:
 - **Pip**: Python's package installer, used to install dependencies from `requirements.txt`.
 
+---
 
 ### 💻 Setup Instructions
 
