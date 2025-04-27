@@ -1,5 +1,11 @@
 # JuriSync - Smart Legal Case Management System
 
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-2.3.2-blue.svg)](https://flask.palletsprojects.com/)
+[![groq](https://img.shields.io/badge/groq-0.4.2-blue.svg)](https://pypi.org/project/groq/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.16-blue.svg)](https://pypi.org/project/SQLAlchemy/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 This is a Flask-based legal assistant platform designed to modernize legal workflows for both users and lawyers. The system not only streamlines legal operations but also supports faster justice delivery through intelligent case prioritization.
 
 ## ⚖️ Features
