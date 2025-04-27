@@ -10,6 +10,24 @@
 
 ---
 
+### 📁 Project Structure
+
+JuriSync/ 
+├── JuriSync-main/ # Main app folder │ 
+├── main.py # App logic 
+├── models.py # DB models  
+├── routes.py # Routes 
+├── forms.py # Form handling  
+├── templates/ # HTML templates  
+├── static/ # Static files  
+├── requirements.txt # Dependencies  
+├── runtime.txt # Python version 
+├── README.md # Documentation 
+├── venv/ # Virtual environment 
+├── .gitignore # Git ignore file
+
+ ---
+
 ## 🚀 Technical Stack
 
 This project utilizes the following technologies:
