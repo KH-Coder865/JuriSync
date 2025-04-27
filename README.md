@@ -54,6 +54,8 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
 ```bash
   -git clone https://github.com/KH-Coder865/JuriSync.git
   -cd JuriSync-main
+  -cd JuriSync-main
+  -cd JuriSync
 ```
 #### 3. **Set Up a Virtual Environment**
 
