@@ -16,7 +16,7 @@
 JuriSync/
 ├──JuriSync-main/
 |    ├── JuriSync-main/
-|    │    ├── JuriSync/
+|    │   └── JuriSync/
 |    │        ├── static
 |    |        |  ├── script.js
 |    │        |  ├── style.css
