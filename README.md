@@ -24,6 +24,8 @@ This project utilizes the following technologies:
 ### 7. **Version Control:**
 - **Git & GitHub**: Version control systems that manage code changes and allow for easy collaboration via GitHub repositories.
 
+---
+
 ### 🔧 Additional Tools and Libraries:
 - **Flask-SQLAlchemy**: For ORM-based database interaction.
 - **Flask-WTF**: For handling and validating forms in Flask applications.
