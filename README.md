@@ -1,6 +1,6 @@
 ### 💻 Setup Instructions
 
-#### 1. *Install Python*
+#### 1. **Install Python**
 To run this project, you’ll need to have *Python 3.7+* installed on your system.
 
 - *Windows:*  
@@ -26,8 +26,13 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
   
 
 ---
+####2. **Clone the repository**
+```bash
+  -git clone https://github.com/KH-Coder865/JuriSync.git
+  -cd JuriSync-main
+```
 
-#### 2. *Set Up a Virtual Environment*
+#### 2. **Set Up a Virtual Environment**
 
 A *virtual environment* is recommended to keep project dependencies isolated.
 
@@ -60,7 +65,7 @@ A *virtual environment* is recommended to keep project dependencies isolated.
 
 ---
 
-#### 3. *Install Dependencies*
+#### 3. **Install Dependencies**
 
 Now that the virtual environment is active, install all the project dependencies by running:
 
@@ -72,7 +77,7 @@ This will install the libraries listed in the requirements.txt file.
 
 ---
 
-#### 4. *Run the Project*
+#### 4. **Run the Project**
 
 Once everything is set up, you can run the app with the following command (if it’s a Flask app, for example):
 
@@ -86,25 +91,3 @@ The app should now be running locally on http://127.0.0.1:5000/.
 
 
 ## 🚀 Getting Started
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/KH-Coder865/JuriSync.git
-cd JuriSync-main
-```
-
-2. **Set up virtual environment**
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. **Install dependencies**
-```bash
-pip install -r .txt
-```
-
-4. **Run the analysis**
-```bash
-python src/main.py
-```
