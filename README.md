@@ -36,8 +36,9 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
     
 
   To confirm Python is installed, run this in your terminal:
-  bash
+  ```bash
   python --version
+  ```
   
 ---
 
@@ -46,7 +47,6 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
   -git clone https://github.com/KH-Coder865/JuriSync.git
   -cd JuriSync-main
 ```
-
 #### 3. **Set Up a Virtual Environment**
 
 A *virtual environment* is recommended to keep project dependencies isolated.
