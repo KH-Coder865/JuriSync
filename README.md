@@ -14,11 +14,11 @@ This project utilizes the following technologies:
 
 ### 🔧 Libraries:
 - Flask-SQLAlchemy, Flask-WTF, Jinja2, Werkzeug
-
+---
 ### 🛠 Tools:
 - **IDE**: Visual Studio Code
 - **API Testing**: Postman
-
+---
 ### 📦 Package Management:
 - **Pip**: Install dependencies from `requirements.txt`
 
