@@ -12,20 +12,36 @@
 
 ### 📁 Project Structure
 
-JuriSync/ 
-├── JuriSync-main/ # Main app folder │ 
-├── main.py # App logic 
-├── models.py # DB models  
-├── routes.py # Routes 
-├── forms.py # Form handling  
-├── templates/ # HTML templates  
-├── static/ # Static files  
-├── requirements.txt # Dependencies  
-├── runtime.txt # Python version 
-├── README.md # Documentation 
-├── venv/ # Virtual environment 
-├── .gitignore # Git ignore file
-
+```
+JuriSync/
+├──JuriSync-main/
+|    ├── JuriSync-main/
+|    │    ├── JuriSync/
+|    │        ├── static
+|    |        |  ├── script.js
+|    │        |  ├── style.css
+|    │        |  └── weblogo.jpg
+|    |        ├── generated-icon.png
+|    |        ├── main.py
+|    |        ├── poetry.lock
+|    |        ├── pyproject.toml
+|    │        └── templates/
+|    |            ├── add_case.html
+|    │            ├── contact_lawyer.html
+|    │            ├── dashboard.html
+|    │            ├── index.html
+|    │            ├── login.html
+|    │            ├── register.html
+|    │            ├── search.html
+|    │            ├── search_lawyer.html
+|    │            ├── user_login.html
+|    │            └── user_register.html
+|    │     
+|    ├── instance/
+|    │   └── legal.db
+|    └── dependecies.txt
+└── README.md   
+```
  ---
 
 ## 🚀 Technical Stack
