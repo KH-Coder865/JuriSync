@@ -55,8 +55,9 @@ A *virtual environment* is recommended to keep project dependencies isolated.
 
    In your project’s root directory, run the following command to create the virtual environment:
    
-   bash
+   ```bash
    python -m venv venv
+   ```
    
 
    This will create a venv directory where the isolated Python environment will reside.
@@ -64,30 +65,35 @@ A *virtual environment* is recommended to keep project dependencies isolated.
 2. *Activate the Virtual Environment:*
 
    - *Windows:*
-     bash
+    ``` bash
      venv\Scripts\activate
+    ```
      
    - *macOS/Linux:*
-     bash
+    ``` bash
      source venv/bin/activate
+    ```
      
    After activation, your terminal prompt should change to something like:
-   bash
+   ```bash
    (venv) $
+   ```
    
 ---
 
 #### 3. **Install Dependencies**
 
-bash
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
 #### 4. **Run the Project**
 
-bash
+```bash
 python main.py
+```
 
 The app should now be running.
 
