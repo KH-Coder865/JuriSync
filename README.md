@@ -147,9 +147,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Kaushik Harsha**
-- GitHub: [@KH-Coder865](https://github.com/KH-Coder865)
-**Nikunj Kumar Agarwal**
-- GitHub: [@nikunjagarwal18](https://github.com/nikunjagarwal18)
+**Kaushik Harsha** - GitHub: [@KH-Coder865](https://github.com/KH-Coder865)
+**Nikunj Kumar Agarwal** - GitHub: [@nikunjagarwal18](https://github.com/nikunjagarwal18)
 
 ---
