@@ -2,8 +2,6 @@
 
 This project utilizes the following technologies:
 
-## 🚀 Technical Stack
-
 - **Backend**: Flask (lightweight Python framework)
 - **Database**: SQLAlchemy (ORM for database management)
 - **User Authentication**: Flask-Login (user session and auth management)
