@@ -30,7 +30,7 @@ This project utilizes the following technologies:
 - **API Testing**: Postman
 
 ### 📦 Package Management:
-- **Pip**: Install dependencies from `requirements.txt`
+- **Pip**: Install dependencies from `dependencies.txt`
 
 
 ## 💻 Setup Instructions
