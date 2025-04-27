@@ -1,3 +1,15 @@
+## ⚖️ Features
+- **User & Lawyer Login:** Role-based authentication and dashboards.
+- **Case Management:** Lawyers can add, view, and manage detailed legal cases.
+- **Case Search:** Search cases by section, article, or type.
+- **Lawyer Search:** Users can find lawyers by specialization and contact them.
+- **Smart Case Prioritization:** Cases are ranked by urgency, complexity, and risk factors, helping in fast and effective case solving, reducing case backlogs.
+- **AI Legal Chatbot:** Instant legal advice powered by Groq's LLaMA AI model.
+- **Dashboard Analytics:** Track total, solved, and pending cases.
+- **Secure Session Handling:** Protected Access to Features.
+
+---
+
 ## 🚀 Technical Stack
 
 This project utilizes the following technologies:
