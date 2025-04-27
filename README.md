@@ -22,7 +22,6 @@ This project utilizes the following technologies:
 ### 📦 Package Management:
 - **Pip**: Install dependencies from `requirements.txt`
 
----
 
 ## 💻 Setup Instructions
 
