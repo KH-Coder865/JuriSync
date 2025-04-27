@@ -137,7 +137,7 @@ A *virtual environment* is recommended to keep project dependencies isolated.
 #### 4. **Install Dependencies**
 
 ```bash
-pip install -r requirements.txt
+pip install -r dependencies.txt
 ```
 
 #### 5. **Run the Project**
