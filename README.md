@@ -1,3 +1,7 @@
+# JuriSync - Smart Legal Case Management System
+
+This is a Flask-based legal assistant platform designed to modernize legal workflows for both users and lawyers. The system not only streamlines legal operations but also supports faster justice delivery through intelligent case prioritization.
+
 ## ⚖️ Features
 - **User & Lawyer Login:** Role-based authentication and dashboards.
 - **Case Management:** Lawyers can add, view, and manage detailed legal cases.
