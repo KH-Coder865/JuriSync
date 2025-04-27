@@ -39,15 +39,15 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
   bash
   python --version
   
-
 ---
-####2. **Clone the repository**
+
+#### 2. **Clone the repository**
 ```bash
   -git clone https://github.com/KH-Coder865/JuriSync.git
   -cd JuriSync-main
 ```
 
-#### 2. **Set Up a Virtual Environment**
+#### 3. **Set Up a Virtual Environment**
 
 A *virtual environment* is recommended to keep project dependencies isolated.
 
@@ -75,13 +75,13 @@ A *virtual environment* is recommended to keep project dependencies isolated.
     ```
      
    After activation, your terminal prompt should change to something like:
-   ```bash
+   ``` bash
    (venv) $
    ```
    
 ---
 
-#### 3. **Install Dependencies**
+#### 4. **Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
@@ -89,7 +89,7 @@ pip install -r requirements.txt
 
 ---
 
-#### 4. **Run the Project**
+#### 5. **Run the Project**
 
 ```bash
 python main.py
