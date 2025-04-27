@@ -70,6 +70,7 @@ This project utilizes the following technologies:
 ### 📦 Package Management:
 - **Pip**: Install dependencies from `dependencies.txt`
 
+---
 
 ## 💻 Setup Instructions
 
