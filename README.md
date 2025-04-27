@@ -10,15 +10,13 @@ This project utilizes the following technologies:
 - **Environment**: Python venv (isolated environments for dependencies)
 - **Version Control**: Git & GitHub
 
----
-
 ### 🔧 Libraries:
 - Flask-SQLAlchemy, Flask-WTF, Jinja2, Werkzeug
----
+  
 ### 🛠 Tools:
 - **IDE**: Visual Studio Code
 - **API Testing**: Postman
----
+
 ### 📦 Package Management:
 - **Pip**: Install dependencies from `requirements.txt`
 
@@ -40,8 +38,6 @@ To run this project, you’ll need to have *Python 3.7+* installed on your syste
   python --version
   ```
   
----
-
 #### 2. **Clone the repository**
 ```bash
   -git clone https://github.com/KH-Coder865/JuriSync.git
@@ -79,15 +75,11 @@ A *virtual environment* is recommended to keep project dependencies isolated.
    (venv) $
    ```
    
----
-
 #### 4. **Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 #### 5. **Run the Project**
 
