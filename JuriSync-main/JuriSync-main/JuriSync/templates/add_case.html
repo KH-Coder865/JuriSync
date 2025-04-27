@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JuriSync - Add New Case</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='weblogo.jpg') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg shadow p-3 rounded" style="background-color: rgb(182, 230, 230);">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3" href="/dashboard-stats">JuriSync</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+                    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="#">Add Cases</a>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#">Our Team</a></li>
+                            <li><a class="dropdown-item" href="#">Our Mission</a></li>
+                            <li><a class="dropdown-item" href="#">E-mail Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Contact Us</a></li> <!-- moved from main nav -->
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" id="expertsDropdown" role="button" data-bs-toggle="dropdown">
+                            Legal Explorers & Experts
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="expertsDropdown">
+                            <li><a class="dropdown-item" href="#">Browse Legal Experts</a></li>
+                            <li><a class="dropdown-item" href="#">Join as Explorer</a></li>
+                            <li><a class="dropdown-item" href="#">Expert Webinars</a></li>
+                        </ul>
+                    </li>
+    
+                </ul>
+    
+                <div class="d-flex gap-2">
+                    <a href="/user_login" class="btn btn-outline-success">Juri Connect</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+   
+    <div class="container mt-5">
+        <h2>Add New Case</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label>Case Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label>Case Type</label>
+                <select name="case_type" class="form-control" required>
+                    <option value="Criminal">Criminal</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Property">Property</option>
+                    <option value="Constitutional">Constitutional</option>
+                    <option value="Family">Family</option>
+                    <option value="Human Rights">Human Rights</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Section</label>
+                <input type="text" name="section" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Article</label>
+                <input type="text" name="article" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Domain</label>
+                <select name="domain" class="form-control" required>
+                    <option value="Local">Local</option>
+                    <option value="National">National</option>
+                    <option value="International">International</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Days Until Next Hearing</label>
+                <input type="number" name="days_until_hearing" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Status</label>
+                <input type="text" name="status" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Days Since Opening</label>
+                <input type="number" name="days_since_start" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>People Influenced</label>
+                <input type="number" name="people_influenced" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Economic Background of Victim</label>
+                <select name="economic_background" class="form-control" required>
+                    <option value="Poor">Poor</option>
+                    <option value="bpl">Below Poverty Line</option>
+                    <option value="mc">Middle Class</option>
+                    <option value="umc">Upper Middle Class</option>
+                    <option value="uc">Upper Class</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Connected to Larger Matter?</label>
+                <select name="connected_to_larger_case" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Previous Court Decisions</label>
+                <textarea name="previous_decisions" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label>Stage of Case</label>
+                <select name="case_stage" class="form-control" required>
+                    <option value="Drafting">Drafting</option>
+                    <option value="Filing">Filing</option>
+                    <option value="Pre-trial">Pre-trial</option>
+                    <option value="Trial">Trial</option>
+                    <option value="Appeal">Appeal</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Is this a PIL?</label>
+                <select name="is_pil" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Marginalized Group</label>
+                <select name="marginalized_group" class="form-control" required>
+                    <option value="None">None</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="OBC">OBC</option>
+                    <option value="Women">Women</option>
+                    <option value="Disabled">Disabled</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Repeated Offense?</label>
+                <select name="is_repeated_offense" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Risk to Life/Liberty/Public Safety?</label>
+                <select name="risk_to_safety" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Minors Involved?</label>
+                <select name="minors_involved" class="form-control" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Complexity Level</label>
+                <select name="complexity_level" class="form-control" required>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Case</button>
+        </form>
+    </div>
+    <div class="cb-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g fill="none" transform="translate(4.3125 1.96875)">
+                    <path
+                        d="m8.33766234.18539339 6.25324676 3.66013799c.4239663.23213419.6894862.67369674.6948052 1.15546889v8.03293043c-.0067685.4813633-.2718851.9222554-.6948052 1.1554689l-9.9635065 5.8257773c-.16123927.0950315-.36928394.042465-.46551948-.1176226-.02979567-.0504763-.04650994-.1075426-.04863637-.1660554v-3.5355964l-3.41844155-2.0065029c-.42292007-.2332135-.68803673-.6741056-.6948052-1.1554689v-8.03293043c.00531897-.48177215.27083885-.9233347.6948052-1.15546889l6.25324675-3.66013799c.42994695-.24719119.95966344-.24719119 1.38961039 0z"
+                        fill="#aecbfa"></path>
+                    <path
+                        d="m3.87952254 7.51077575c-.2071433 0-.37578754.16482432-.38195666.37047106l-.00017484.01168315.00011686 3.93313724.00124729.0411117c.0140403.2399191.14560781.4583134.35248257.5826405l.01455478.0085205 1.92367175 1.0977922v1.5408207l.00104816.0285198c.01458814.1977321.17963628.3536231.38109469.3536231.06207295 0 .12313137-.0151197.17792842-.0439496l.01356578-.0074923 5.10386006-2.9554178.0351461-.0213652c.2017676-.130565.326808-.3527605.3328712-.5940438l.0002294-.0168637v-3.94632717c0-.06676271-.0174908-.13236049-.0507304-.19026028-.1030175-.17944512-.3295288-.24370564-.5108491-.14713947l-.0108236.00598733-3.39415899 1.94855204-.02908133.01638412c-.11419685.05793708-.25049762.05492736-.36239795-.00902915l-.0123306-.00735497-3.39502649-1.94926068c-.05790682-.03324727-.12351449-.05073932-.1902871-.05073932z"
+                        fill="#669df6"></path>
+                    <path
+                        d="m7.9324653 3.09452966c-.14161657-.08119491-.31452707-.0842875-.45859885-.00907959l-.01385039.00752263-3.74223763 2.11293671c-.05972906.03372413-.10928008.08290297-.14345358.14237607-.103087.17940521-.04445328.40743784.1303244.51539532l.01062567.00633201 3.74158771 2.14993223c.14370794.08257519.31956752.0845859.46476665.00624096l.01395371-.00783261 3.68412381-2.14962493c.0577621-.0337032.1056682-.08197465.1389315-.13999111.1029168-.1795029.0440668-.40747982-.1308132-.51527148l-.0106316-.00632193z"
+                        fill="#185abc"></path>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <div class="chat-container">
+        <div class="chat-nav">
+            <a class="navbar-brand fw-bold fs-3" style="text-decoration: none;cursor: default;"  href="#">JuriSaathi</a>
+            <h6>Hey! I am your Legal Assistant! Feel free to ask any doubts.</h6>
+        </div>
+        <div class="cc2">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" class="form-control" placeholder="Ask a question...">
+                <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+
+</html>
