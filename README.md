@@ -139,3 +139,17 @@ The app should now be running.
 
 ---
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Kaushik Harsha**
+- GitHub: [@KH-Coder865](https://github.com/KH-Coder865)
+**Nikunj Kumar Agarwal**
+- GitHub: [@nikunjagarwal18](https://github.com/nikunjagarwal18)
+
+---
