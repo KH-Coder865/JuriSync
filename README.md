@@ -24,8 +24,8 @@ This project utilizes the following technologies:
 
 ---
 
-### 💻 Setup Instructions
-
+## 💻 Setup Instructions
+---
 #### 1. **Install Python**
 To run this project, you’ll need to have *Python 3.7+* installed on your system.
 
