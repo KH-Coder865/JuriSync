@@ -35,6 +35,7 @@ JuriSync/
 |    |        ├── main.py
 |    |        ├── poetry.lock
 |    |        ├── pyproject.toml
+|    |        ├── dependecies.txt
 |    │        └── templates/
 |    |            ├── add_case.html
 |    │            ├── contact_lawyer.html
@@ -47,9 +48,8 @@ JuriSync/
 |    │            ├── user_login.html
 |    │            └── user_register.html
 |    │     
-|    ├── instance/
-|    │   └── legal.db
-|    └── dependecies.txt
+|    └── instance/
+|        └── legal.db
 └── README.md   
 ```
  ---
