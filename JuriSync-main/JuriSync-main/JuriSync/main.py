@@ -7,8 +7,7 @@ import os
 from flask import jsonify
 
 app = Flask(__name__)
-f=open('C:/Users/KAUSHIK/Desktop/DOCS/KH/Groq_API_KEY.txt','r')
-groq_client = groq.Groq(api_key=f.readline())
+groq_client = groq.Groq(api_key=os.environ.get('GROQ_API_KEY'))
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///legal.db'
 db = SQLAlchemy(app)
