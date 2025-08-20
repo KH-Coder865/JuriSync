@@ -20,6 +20,12 @@ This is a Flask-based legal assistant platform designed to modernize legal workf
 
 ---
 
+## Working Site
+- Hosted on **Render**.
+- URL: [JuriSync_KH_NKA](https://jurisync.onrender.com/)
+
+---
+
 ### 📁 Project Structure
 
 ```
